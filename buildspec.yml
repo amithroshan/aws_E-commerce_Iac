@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+ # Ensure scripts are executable
+
+  build:
+    commands:
+      - echo "Building..."
+
+artifacts:
+  files:
+    - appspec.yml
+    - scripts/**/*       # ✅ Include the entire scripts directory
+    - public/**/*
+    - server.js
+    - package.json
+    - package-lock.json
+  base-directory: .      # Ensure paths are relative to the root
+  discard-paths: no      # Preserve directory structure
